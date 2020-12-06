@@ -1,5 +1,3 @@
-from itertools import combinations
-
 passwords = []
 
 with open('input_file.txt') as input_file:
