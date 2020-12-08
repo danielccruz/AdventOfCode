@@ -17,11 +17,7 @@ def processor(instructions, position, accumulator, visited_positions):
     return accumulator
 
 
-instructions = []
-with open('input_file.txt') as input_file:
-    for line in input_file.readlines():
-        line = line.strip().split(' ')
-        instructions.append(line)
+instructions = [line.rstrip('\n').split(' ') for line in open('input_file.txt')]
 
 ###########################
 BRUTE_FORCE_SOLUTION = True
