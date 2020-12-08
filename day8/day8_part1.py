@@ -1,10 +1,8 @@
 def processor(instructions, position, accumulator, visited_positions):
     print(position)
     if position in visited_positions:
-        print('zzz')
         return accumulator
     if position > len(instructions):
-        print('xxx')
         return accumulator
     if instructions[position][0] == 'jmp':
         visited_positions.append(position)

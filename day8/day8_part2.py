@@ -23,7 +23,6 @@ with open('input_file.txt') as input_file:
         line = line.strip().split(' ')
         instructions.append(line)
 
-
 ###########################
 BRUTE_FORCE_SOLUTION = True
 ###########################
