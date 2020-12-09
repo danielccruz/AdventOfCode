@@ -7,17 +7,17 @@ def processor(instructions, position, accumulator, visited_positions):
         visited_positions.append(position)
         position = position + int(instructions[position][1])
         return processor(instructions, position, accumulator, visited_positions)
-    if instructions[position][0] == 'nop':
+    elif instructions[position][0] == 'nop':
         visited_positions.append(position)
         return processor(instructions, position + 1, accumulator, visited_positions)
-    if instructions[position][0] == 'acc':
+    elif instructions[position][0] == 'acc':
         visited_positions.append(position)
         accumulator = accumulator + int(instructions[position][1])
         return processor(instructions, position + 1, accumulator, visited_positions)
     return accumulator
 
 
-instructions = [line.rstrip('\n').split(' ') for line in open('input_file.txt')]
+instructions = [line.rstrip('\n').split(' ') for line in open('../day8/input_file.txt')]
 
 ###########################
 BRUTE_FORCE_SOLUTION = True
