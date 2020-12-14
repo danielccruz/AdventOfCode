@@ -2,7 +2,6 @@ notes = [line.rstrip('\n') for line in open('../day13/input_file.txt')]
 
 bus_ids = [x for x in notes[1].split(',')]
 
-
 ##### This was my solution. It ran for 4 hours but it didn't find anything.
 ##### Some bird talked about Chinese Remainder Theorem so I tried co create a solution with it.
 
@@ -27,12 +26,9 @@ bus_ids = [x for x in notes[1].split(',')]
 # This only works since the input numbers are relatively prime
 
 
-
-
-
-
-
 import math
+
+
 ### Auxiliary functions ###
 # Congruence solving
 
@@ -44,12 +40,12 @@ def extended_euclid(a, b):
     k = a // b
     return (y, x - k * y)
 
+
 def invert_modulo(a, n):
     (b, x) = extended_euclid(a, n)
     if b < 0:
         b = (b % n + n) % n
     return b
-
 
 
 # Multiply all the elements of the list except the exception
@@ -70,15 +66,17 @@ def construct_CRT_table(numbers: [tuple]) -> int:
         n_i = custom_mult(modulos, modulos[i])
         inv_mod_i = invert_modulo(n_i, modulos[i])
         bNx_i = remainders[i] * n_i * inv_mod_i
-        #print(f'b_{i} = {remainders[i]} || N_{i} = {n_i} || x_{i} = {inv_mod_i} || b_N_x_{i} = {bNx_i}')
+        # print(f'b_{i} = {remainders[i]} || N_{i} = {n_i} || x_{i} = {inv_mod_i} || b_N_x_{i} = {bNx_i}')
         totals += bNx_i
     return math.prod(modulos) - (totals % math.prod(modulos))
+
 
 def prepate_input():
     processed_list = []
     for i in range(0, len(bus_ids)):
         if bus_ids[i].isdigit():
-            processed_list.append((i+1, int(bus_ids[i])))
+            processed_list.append((i + 1, int(bus_ids[i])))
     return processed_list
+
 
 print(construct_CRT_table(prepate_input()) + 1)
